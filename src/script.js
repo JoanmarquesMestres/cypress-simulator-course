@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("login")
-  const loginButton = document.querySelector("#login form button")
+  const loginButton = document.querySwwelector("#login form button")
   const mainContent = document.querySelector(".content")
   const logoutButton = document.getElementById("logoutButton")
   const sandwichMenu = document.getElementById("sandwich-menu")
