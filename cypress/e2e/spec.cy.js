@@ -33,6 +33,9 @@ cy.get("#outputArea", { timeout: 6000 })
   .and ('contain', "The `cy.contains` command has not been implemented yet.") 
   .and('be.visible')
 })
+Cypress._.times(100, () => {
+
+
 it("it successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
 cy.get('#codeInput').type("cy.log(Yay!)")
 cy.get('#runButton').click()
@@ -42,7 +45,7 @@ cy.get("#outputArea", { timeout: 6000 })
   .and('be.visible')
 
 })
-
+})
 
 it('it shows an error when entering and running an invalid Cypress command .', () => {
 cy.get('#codeInput').type("cy.coantains()")
