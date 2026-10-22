@@ -160,7 +160,7 @@ cy.contains('button', "Login").click()
 cy.get('#outputArea')
 .should('not.contain', "cy.log('yay')")
 })
-it.only('' , () => {
+it.only('custom run' , () => {
 cy.run("cy.log('Yo!')")
 cy.get("#outputArea", { timeout: 6000 })
   .should('contain', "Success:")
