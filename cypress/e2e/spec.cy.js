@@ -73,6 +73,7 @@ cy.get('a[href="https://docs.cypress.io/api/table-of-contents"]')
 .should('have.attr', "target", "_blank" )
 .and('be.visible')
 })
+
 it('it maximizes and minimizes a simulation result', () => {
 cy.get('#expandIcon')
 .should('be.visible')
@@ -236,6 +237,19 @@ it("it doesn't show the cookie consent banner on the login page" , () => {
 cy.clearAllLocalStorage()
 cy.reload()
 cy.get('#cookieConsent').should('not.be.visible')
+})
+})
+describe("matrix failiure" , () => {
+
+it.only("it errors out with a glitch in the Matrix" , () => {
+  cy.visit("./src/index.html?skipCaptcha=true&chancesOfError=1")
+  cy.contains("button", "Login").click()
+cy.get('#codeInput').type("cy.log(Yay!)")
+cy.get('#runButton').click()
+cy.get("#outputArea", { timeout: 6000 })
+  .should('contain', "Success:")
+  .and ('contain', "cy.log(Yay!) // Logged message Yay!") 
+  .and('be.visible')
 })
 })
 
