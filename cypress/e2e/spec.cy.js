@@ -2,7 +2,7 @@
 describe('cypress commands test (positive)', () => { 
   beforeEach(() => {
     cy.login()
-cy.visit("./src/index.html?skipCaptcha=true", {
+cy.visit("./src/index.html?skipCaptcha=true&chancesOfError=0", {
   onBeforeLoad(win) {
     win.localStorage.setItem("cookieConsent", "accepted")
      }
@@ -33,7 +33,7 @@ cy.get("#outputArea", { timeout: 6000 })
   .and ('contain', "The `cy.contains` command has not been implemented yet.") 
   .and('be.visible')
 })
-Cypress._.times(100, () => {
+
 
 
 it("it successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
@@ -44,7 +44,6 @@ cy.get("#outputArea", { timeout: 6000 })
   .and ('contain', "cy.log(Yay!) // Logged message Yay!") 
   .and('be.visible')
 
-})
 })
 
 it('it shows an error when entering and running an invalid Cypress command .', () => {
@@ -163,7 +162,7 @@ cy.contains('button', "Login").click()
 cy.get('#outputArea')
 .should('not.contain', "cy.log('yay')")
 })
-it.only('custom run' , () => {
+it('custom run' , () => {
 cy.run("cy.log('Yo!')")
 cy.get("#outputArea", { timeout: 6000 })
   .should('contain', "Success:")
@@ -171,7 +170,7 @@ cy.get("#outputArea", { timeout: 6000 })
   .and('be.visible')
 })
 })
-describe.only('not consenting automatcally to cookies', () => {
+describe('not consenting automatcally to cookies', () => {
   beforeEach(() => {
     cy.login()
     cy.visit("./src/index.html?skipCaptcha=true")
@@ -204,7 +203,7 @@ cy.window()
 describe('Captcha',() => {
 beforeEach(() => {
     cy.visit("./src/index.html")
-        cy.contains("button", "Login").click()
+    cy.contains("button", "Login").click()
 })
 
 it("it disables the captcha verify button when no answer is provided or it's cleared" , () => {
